@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterLink, RouterOutlet } from "@angular/router";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   imports: [RouterOutlet, RouterLink],
-  templateUrl: './app.component.html',
+  templateUrl: "./app.component.html",
 })
 export class AppComponent {
-  title = 'vehicle-app';
+  title = "vehicle-app";
 }

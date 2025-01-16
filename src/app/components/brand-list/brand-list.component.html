@@ -1,11 +1,7 @@
 <div class="brand-list">
   <mat-form-field appearance="outline" class="search-bar">
     <mat-label>Search</mat-label>
-    <input
-            matInput
-            (input)="onFilter($event)"
-            placeholder="Brand name"
-    />
+    <input matInput (input)="onFilter($event)" placeholder="Brand name" />
   </mat-form-field>
 
   @if (!vehicleService.brands().length) {
@@ -13,13 +9,12 @@
       <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
     </div>
   } @else {
-
     <cdk-virtual-scroll-viewport itemSize="50" class="brand-scroll">
       <mat-list>
         <mat-list-item
-                *cdkVirtualFor="let brand of filteredBrands()"
-                (click)="selectBrand(brand.Make_ID)"
-                class="brand-list-item"
+          *cdkVirtualFor="let brand of filteredBrands()"
+          (click)="selectBrand(brand.Make_ID)"
+          class="brand-list-item"
         >
           {{ brand.Make_Name }}
         </mat-list-item>

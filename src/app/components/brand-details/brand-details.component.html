@@ -10,10 +10,15 @@
   } @else {
     @defer {
       <mat-chip-listbox class="my-4">
-        @for (type of vehicleService.vehicleTypes(); track type.VehicleTypeName) {
+        @for (
+          type of vehicleService.vehicleTypes();
+          track type.VehicleTypeName
+        ) {
           <mat-chip
-                  [highlighted]="vehicleService.selectedType() === type.VehicleTypeName"
-                  (click)="filterByType(type.VehicleTypeName)"
+            [highlighted]="
+              vehicleService.selectedType() === type.VehicleTypeName
+            "
+            (click)="filterByType(type.VehicleTypeName)"
           >
             {{ type.VehicleTypeName }}
           </mat-chip>
