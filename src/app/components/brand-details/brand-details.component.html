@@ -1,0 +1,32 @@
+<div class="brand-details">
+  <div class="brand-details-header">
+    <h2>{{ vehicleService.selectedBrand()?.Make_Name }}</h2>
+    <button mat-button (click)="goBack()">Go Back</button>
+  </div>
+  @if (!vehicleService.models().length) {
+    <div class="spinner-container">
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+  } @else {
+    @defer {
+      <mat-chip-listbox class="my-4">
+        @for (type of vehicleService.vehicleTypes(); track type.VehicleTypeName) {
+          <mat-chip
+                  [highlighted]="vehicleService.selectedType() === type.VehicleTypeName"
+                  (click)="filterByType(type.VehicleTypeName)"
+          >
+            {{ type.VehicleTypeName }}
+          </mat-chip>
+        }
+      </mat-chip-listbox>
+      <div class="models">
+        @for (model of vehicleService.filteredModels(); track model.Model_ID) {
+          <mat-card class="p-2">
+            <mat-card-title>{{ model.Model_Name }}</mat-card-title>
+            <mat-card-subtitle>{{ model.VehicleTypeName }}</mat-card-subtitle>
+          </mat-card>
+        }
+      </div>
+    }
+  }
+</div>
